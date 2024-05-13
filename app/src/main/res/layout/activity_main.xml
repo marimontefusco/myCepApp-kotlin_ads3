@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:boxStrokeColor="@color/Verde"
+            app:hintTextColor="@color/Verde"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCEP"
+                android:hint="@string/cep"
+                android:inputType="number"
+                android:textCursorDrawable="@drawable/cursor"
+                android:maxLength="8"
+                android:textColor="@color/Verde"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+     <Button
+         android:id="@+id/btBuscarCEP"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/buscar_cep"
+         android:textSize="18sp"
+         android:textStyle="bold"
+         android:textAllCaps="true"
+         android:backgroundTint="@color/Verde"
+         android:layout_marginTop="50dp"
+         android:layout_marginEnd="20dp"
+         android:padding="15dp"
+     />
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxStrokeColor="@color/Verde"
+        app:hintTextColor="@color/Verde"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editLogradouro"
+            android:hint="@string/logradouro"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textColor="@color/Verde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxStrokeColor="@color/Verde"
+        app:hintTextColor="@color/Verde"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editBairro"
+            android:hint="@string/bairro"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textColor="@color/Verde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxStrokeColor="@color/Verde"
+        app:hintTextColor="@color/Verde"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCidade"
+            android:hint="@string/cidade"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textColor="@color/Verde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxStrokeColor="@color/Verde"
+        app:hintTextColor="@color/Verde"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editEstado"
+            android:hint="@string/estado"
+            android:inputType="text"
+            android:maxLength="2"
+            android:layout_gravity="center"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textColor="@color/Verde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
+
+</ScrollView>
