@@ -22,44 +22,55 @@ import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
+    // variável p viewBinding -> herda da activity MainBinding
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Configurando o viewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         window.statusBarColor = Color.parseColor("#4CAF50")
 
-        //Configuracoes do retrofit
-
+        //Configurando o retrofit
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://viacep.com.br/ws/")
+            .baseUrl("https://viacep.com.br/ws/") // inserindo endereço da api ViaCep -> atenção: /ws/
             .build()
             .create(Api::class.java)
 
-        binding.btBuscarCEP.setOnClickListener{
-            val cep = binding.editCEP.text.toString()
-            if (cep.isEmpty()){
-                Toast.makeText(this, "Preencha o campo CEP",Toast.LENGTH_SHORT).show()
-            }else{
+        // Configurando ação do btn -> Recuperar dados inseridos pelo usuário
+        binding.btBuscarCEP.setOnClickListener {
 
-                retrofit.setEndereco(cep).enqueue(/* callback = */ object : Callback<Endereco>{
+            //variável q recebe dado do input -> editCEP
+            val cep = binding.editCEP.text.toString()
+
+            if (cep.isEmpty()) {
+                Toast.makeText(this, "Preencha o campo CEP", Toast.LENGTH_SHORT).show()
+
+            } else {
+                retrofit.setEndereco(cep).enqueue(/* callback = */ object : Callback<Endereco> {  //.enqueue -> é um callback do model Endereco
                     override fun onResponse(call: Call<Endereco>, response: Response<Endereco>) {
+
+                        // Verificação status da response
                         if (response.code() == 200){
                             val logradouro = response.body()?.logradouro.toString()
                             val bairro     = response.body()?.bairro.toString()
                             val localidade = response.body()?.localidade.toString()
                             val uf         = response.body()?.uf.toString()
-                            setFormulario(logradouro,bairro,localidade,uf)
-                        }
-                        else{
+                            setFormulario(logradouro, bairro, localidade, uf)
 
-                            Toast.makeText(applicationContext, "CEP Errado",Toast.LENGTH_SHORT).show()
+                        } else if (response.code() == 300){
+                            Toast.makeText(applicationContext, "CEP inválido!", Toast.LENGTH_SHORT).show()
+
+                        } else {
+                            Toast.makeText(applicationContext, "CEP inexistente",Toast.LENGTH_SHORT).show()
                         }
                     }
 
+                    // Response em caso de falha
                     override fun onFailure(call: Call<Endereco>, t: Throwable) {
                         Toast.makeText(applicationContext, "Erro no servidor",Toast.LENGTH_SHORT).show()
                     }
@@ -69,16 +80,15 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
-        private fun setFormulario(logradouro: String,bairro: String,localidade: String,uf:String){
-
-            binding.editLogradouro.setText(logradouro)
-            binding.editBairro.setText(bairro)
-            binding.editCidade.setText(localidade)
-            binding.editEstado.setText(uf)
-
-        }
-
+    // Método setFormulário -> chamado no if - linha 63
+    private fun setFormulario(logradouro: String, bairro: String, localidade: String, uf:String) {
+        binding.editLogradouro.setText(logradouro)
+        binding.editBairro.setText(bairro)
+        binding.editCidade.setText(localidade)
+        binding.editEstado.setText(uf)
+    }
 
 }

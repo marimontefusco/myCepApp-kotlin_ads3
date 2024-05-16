@@ -35,7 +35,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
-    }
+    } //config pro viewBinding funcionar
 
 }
 
