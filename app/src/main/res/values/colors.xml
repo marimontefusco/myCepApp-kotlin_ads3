@@ -2,5 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Verde">#4CAF50</color>
+    <color name="gradientStart">#FFD7DEBA</color>
+    <color name="gradientEnd">#FF7FE1EE</color>
+    <color name="lightBlue">#FF7FE1EE</color>
+    <color name="darkBlue">#0E1159</color>
 </resources>
